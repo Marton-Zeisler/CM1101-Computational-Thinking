@@ -27,4 +27,4 @@ This module aims to excite and enthuse students in the field of IT, information 
   - Presentation skills.
 
 ## Essential Reading and Resource List:
-- Think Python 2nd edition
+- Think Python: How to Think Like a Computer Scientist (Allen B. Downey)
