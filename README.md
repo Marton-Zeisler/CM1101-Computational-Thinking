@@ -26,5 +26,5 @@ This module aims to excite and enthuse students in the field of IT, information 
   - An introduction to tools available for developing software collaboratively, e.g. Git.
   - Presentation skills.
 
-## Essential Reading and Resource List:
+## Read:
 - Think Python: How to Think Like a Computer Scientist (Allen B. Downey)
