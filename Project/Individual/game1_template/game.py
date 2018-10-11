@@ -41,7 +41,23 @@ def remove_spaces(text):
     >>> remove_spaces("   ")
     ''
     """
-    return text.strip()
+    newText = ""			
+    foundText = False
+    counter = 0
+    for each in text:
+    	if list(text[counter:]) == [" "] * (len(text)-counter):
+    		break
+
+    	if foundText == True :
+    		newText += each
+    	elif foundText == False and each != " ":
+    		newText += each
+    		foundText = True
+    	
+    	counter += 1
+
+
+    return newText
 
 
 def normalise_input(user_input):
