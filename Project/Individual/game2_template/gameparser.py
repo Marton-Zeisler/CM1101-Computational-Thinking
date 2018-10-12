@@ -27,7 +27,12 @@ def filter_words(words, skip_words):
     ['go', 'passage', 'south']
 
     """
-    pass
+    newWords = []
+    for each in words:
+    	if not (each in skip_words):
+    		newWords.append(each) 
+
+    return newWords
 
     
 def remove_punct(text):
@@ -76,9 +81,39 @@ def normalise_input(user_input):
     ['go', 'passage', 'south']
 
     """
-    # Remove punctuation and convert to lower case
-    no_punct = remove_punct(user_input).lower()
+    # Remove punctuation
+    normalised = remove_punct(user_input)
+     # Convert it to lower case
+    normalised = normalised.lower()
+    # Creating an array of words, no parameters in the split function means split is based on any whitespaces
+    normalised = normalised.split()
+    # Removing skip words
+    normalised = filter_words(normalised, skip_words)
 
-    #
-    # COMPLETE ME!
-    #
+    return normalised
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

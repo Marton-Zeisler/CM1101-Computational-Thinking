@@ -24,7 +24,14 @@ def list_of_items(items):
     'money, a student handbook, laptop'
 
     """
-    pass
+    string = ""
+    for index in range(0, len(items)):
+    	string += items[index]["name"]
+
+    	if index != len(items)-1:
+    		string += ", "
+
+    return string
 
 
 def print_room_items(room):
@@ -49,7 +56,10 @@ def print_room_items(room):
     Note: <BLANKLINE> here means that doctest should expect a blank line.
 
     """
-    pass
+    if room["items"]: # array is not empty
+    	print("There is", list_of_items(room["items"]) + " here.")
+    	print("")
+
 
 
 def print_inventory_items(items):
@@ -62,7 +72,10 @@ def print_inventory_items(items):
     <BLANKLINE>
 
     """
-    pass
+    if items:
+    	print("You have " + list_of_items(items) + ".")
+    	print("")
+
 
 
 def print_room(room):
@@ -118,10 +131,10 @@ def print_room(room):
     # Display room description
     print(room["description"])
     print()
+    print_room_items(room)
 
-    #
-    # COMPLETE ME!
-    #
+
+
 
 def exit_leads_to(exits, direction):
     """This function takes a dictionary of exits and a direction (a particular
@@ -193,6 +206,13 @@ def print_menu(exits, room_items, inv_items):
     #
     # COMPLETE ME!
     #
+
+    for each in room_items:
+    	print("TAKE " + each["id"] + " to take " + each["name"] + ".")
+
+    for each in inv_items:
+    	print("DROP " + each["id"] + " to drop your " + each["name"] + ".")
+
     
     print("What do you want to do?")
 
@@ -222,7 +242,13 @@ def execute_go(direction):
     (and prints the name of the room into which the player is
     moving). Otherwise, it prints "You cannot go there."
     """
-    pass
+    # check if the current room has the given direction
+    global current_room
+    if direction in current_room["exits"]:
+    	current_room = rooms[current_room["exits"][direction]]
+    	print(current_room["name"])
+    else:
+    	print("You cannot go there.")
 
 
 def execute_take(item_id):
@@ -231,7 +257,15 @@ def execute_take(item_id):
     there is no such item in the room, this function prints
     "You cannot take that."
     """
-    pass
+
+    for each in current_room["items"]:
+    	if each["id"] == item_id:
+    		inventory.append(each)
+    		current_room["items"].remove(each)
+    		break
+
+    print("You cannot take that.")
+
     
 
 def execute_drop(item_id):
@@ -239,8 +273,14 @@ def execute_drop(item_id):
     player's inventory to list of items in the current room. However, if there is
     no such item in the inventory, this function prints "You cannot drop that."
     """
-    pass
     
+    for each in inventory:
+    	if each["id"] == item_id:
+    		current_room["items"].append(each)
+    		inventory.remove(each)
+    		break
+
+    print("You cannot dropp that.")
 
 def execute_command(command):
     """This function takes a command (a list of words as returned by

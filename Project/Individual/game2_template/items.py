@@ -13,8 +13,7 @@ item_laptop = {
 
     "name": "laptop",
 
-    "description":
-    "It has seen better days. At least it has a WiFi card!"
+    "description": "It has seen better days. At least it ha a WiFi card!"
 }
 
 item_money = {
