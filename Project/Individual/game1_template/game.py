@@ -116,6 +116,7 @@ def exit_leads_to(exits, direction):
     >>> exit_leads_to(rooms["Tutor"]["exits"], "west")
     'Reception'
     """
+    
     return rooms[exits[direction]]["name"]
     
 
@@ -133,7 +134,6 @@ def print_menu_line(direction, leads_to):
     Go SOUTH to MJ and Simon's room.
     """
     print("Go " + direction.upper() + " to " + leads_to + ".")
-    pass
 
 
 def print_menu(exits):
@@ -158,7 +158,7 @@ def print_menu(exits):
     #     and for each exit print the appropriate menu line
 
     for key,value in exits.items():
-        print_menu_line(key, rooms[value]["name"])
+        print_menu_line(key, exit_leads_to(exits, key))
 
     print("Where do you want to go?")
 

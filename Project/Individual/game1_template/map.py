@@ -1,4 +1,5 @@
-room_reception = {
+room_reception = { 
+
     "name": "Reception",
 
     "description":
